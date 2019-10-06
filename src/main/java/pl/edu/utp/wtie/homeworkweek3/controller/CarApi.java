@@ -33,10 +33,8 @@ public class CarApi {
     @GetMapping("/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable long id) {
         Optional<Car> firstCar = carService.getFirstCar(id);
-        if (firstCar.isPresent()) {
-            return new ResponseEntity<>(firstCar.get(),HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return firstCar.map(car -> new ResponseEntity<>(car, HttpStatus.OK)).
+                orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping(value = "/colours/{colour}")
