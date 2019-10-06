@@ -71,18 +71,16 @@ public class CarApi {
                                      @RequestParam(required = false) CarColour colour) {
         Optional<Car> firstCar = carService.getFirstCar(id);
         if (firstCar.isPresent()) {
-            Car newCar = firstCar.get();
+            Car modifiedCar = firstCar.get();
             if (mark != null) {
-                newCar.setMark(mark);
+                modifiedCar.setMark(mark);
             }
             if (model != null) {
-                newCar.setModel(model);
+                modifiedCar.setModel(model);
             }
             if (colour != null) {
-                newCar.setColour(colour);
+                modifiedCar.setColour(colour);
             }
-            carService.getCarList().remove(firstCar.get());
-            carService.getCarList().add(newCar);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
