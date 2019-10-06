@@ -35,7 +35,10 @@ public class CarService {
     }
 
     public boolean addNewCar(Car car) {
-        return carList.add(car);
+        if (car.getMark() != null && car.getModel() != null && car.getColour() != null) {
+            return carList.add(car);
+        }
+        return false;
     }
 
     public boolean changeCar(Car newCar) {
