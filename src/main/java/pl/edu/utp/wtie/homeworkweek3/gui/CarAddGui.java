@@ -47,8 +47,11 @@ public class CarAddGui extends VerticalLayout {
             } else {
                 Car newCar = new Car(numberFieldId.getValue().longValue(), comboBoxMark.getValue(),
                         textFieldModel.getValue(), comboBoxColour.getValue());
-                carService.addNewCar(newCar);
-                dialogCar.add(new Label("Adding completed successfully"));
+                if (carService.addNewCar(newCar)) {
+                    dialogCar.add(new Label("Adding completed successfully"));
+                } else {
+                    dialogCar.add(new Label("Not all car values"));
+                }
             }
             dialogCar.open();
         });
