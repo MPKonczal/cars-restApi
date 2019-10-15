@@ -2,8 +2,6 @@ package pl.edu.utp.wtie.homeworkweek3.gui;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.router.Route;
@@ -14,7 +12,7 @@ import pl.edu.utp.wtie.homeworkweek3.service.CarService;
 import java.util.Optional;
 
 @Route("show-id")
-public class CarIdShowGui extends VerticalLayout {
+public class CarIdShowGui extends VerticalLayout implements quickReturn {
 
     private CarService carService;
 
@@ -39,10 +37,6 @@ public class CarIdShowGui extends VerticalLayout {
             }
         });
 
-        Button buttonBack = new Button("Back", new Icon(VaadinIcon.ARROW_LEFT));
-        buttonBack.addClickListener(buttonClickEvent ->
-                buttonBack.getUI().ifPresent(ui -> ui.navigate("main")));
-
-        add(numberFieldId, buttonShow, buttonBack);
+        add(numberFieldId, buttonShow, addButtonBack());
     }
 }

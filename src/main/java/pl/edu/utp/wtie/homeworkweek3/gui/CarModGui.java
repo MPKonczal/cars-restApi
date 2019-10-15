@@ -4,8 +4,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextField;
@@ -19,7 +17,7 @@ import pl.edu.utp.wtie.homeworkweek3.service.CarService;
 import java.util.HashSet;
 
 @Route("mod-car")
-public class CarModGui extends VerticalLayout {
+public class CarModGui extends VerticalLayout implements quickReturn {
 
     private CarService carService;
 
@@ -60,10 +58,6 @@ public class CarModGui extends VerticalLayout {
             dialogCar.open();
         });
 
-        Button buttonBack = new Button("Back", new Icon(VaadinIcon.ARROW_LEFT));
-        buttonBack.addClickListener(buttonClickEvent ->
-                buttonBack.getUI().ifPresent(ui -> ui.navigate("main")));
-
-        add(comboBoxId, groupMark, placeholderFieldModel, groupColour, buttonMod, buttonBack);
+        add(comboBoxId, groupMark, placeholderFieldModel, groupColour, buttonMod, addButtonBack());
     }
 }

@@ -1,11 +1,8 @@
 package pl.edu.utp.wtie.homeworkweek3.gui;
 
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,7 @@ import pl.edu.utp.wtie.homeworkweek3.model.CarColour;
 import pl.edu.utp.wtie.homeworkweek3.service.CarService;
 
 @Route("show-colour")
-public class CarsColourShowGui extends VerticalLayout {
+public class CarsColourShowGui extends VerticalLayout implements quickReturn {
 
     private CarService carService;
 
@@ -36,10 +33,6 @@ public class CarsColourShowGui extends VerticalLayout {
             }
         });
 
-        Button buttonBack = new Button("Back", new Icon(VaadinIcon.ARROW_LEFT));
-        buttonBack.addClickListener(buttonClickEvent ->
-                buttonBack.getUI().ifPresent(ui -> ui.navigate("main")));
-
-        add(comboBoxColours, buttonBack);
+        add(comboBoxColours, addButtonBack());
     }
 }

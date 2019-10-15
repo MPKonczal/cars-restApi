@@ -4,7 +4,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-@Route("main")
+@Route("main-cars")
 public class MainGui extends VerticalLayout {
 
     public MainGui() {
@@ -29,7 +29,7 @@ public class MainGui extends VerticalLayout {
         buttonModCar.addClickListener(buttonClickEvent ->
                 buttonModCar.getUI().ifPresent(ui -> ui.navigate("mod-car")));
 
-        Button buttonModCarById = new Button("Modify one field");
+        Button buttonModCarById = new Button("Modify car property");
         buttonModCarById.addClickListener(buttonClickEvent ->
                 buttonModCarById.getUI().ifPresent(ui -> ui.navigate("mod-car-field")));
 
